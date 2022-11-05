@@ -191,6 +191,11 @@ label{
 
 .areaTexto
 {
-    width: 350px;
-    height: 250px;
+    width: 490px;
+    height: 215px;
+    background: #F1FAEE;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 5px 5px 5px black;
 }
