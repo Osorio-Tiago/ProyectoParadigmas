@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto de Paradigmas</title>
@@ -24,8 +24,10 @@
                 </li>
                 <li class="list" data-color="#457B9D">
                     <a href="#"><!--Descarga lo que actualmente se encuentre en la pantalla-->
+                        <label id="downloadButton">
                         <span class="icon"><i class="fa-solid fa-download"></i></span>
                         <span class="title">Descargar</span>
+                        </label>
                     </a>
                 </li>
                 <li class="list" data-color="#A8DADC">
@@ -65,8 +67,7 @@
     list.forEach(elements =>{
         elements.addEventListener('mouseenter', function(event){
             let bg=document.querySelector('body');
-            let color=event.target.getAttribute('data-color');
-            bg.style.background=color;
+            bg.style.background=event.target.getAttribute('data-color');
         })
     })
 
@@ -96,6 +97,20 @@
             reader.onerror = error => reject(error)
             reader.readAsText(file)
         })
+    }
+
+    document.getElementById('downloadButton')
+    .addEventListener('click', download)
+
+    function download() {
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' +
+                            encodeURIComponent(document.getElementById('content-target').value));
+        element.setAttribute('download', 'file');
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
     }
 </script>
 
