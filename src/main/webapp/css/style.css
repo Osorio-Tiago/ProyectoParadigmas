@@ -9,9 +9,9 @@
 body
 {
     display: flex;
-    margin-left: 40px;
     justify-content: left;
     align-items: center;
+    margin-left: 20px;
     min-height: 100vh;
     background: #1D3557;
     transition: 0.5s;
@@ -21,7 +21,6 @@ body
 {
     float: left;
     width: 50%;
-    padding: 10px;
     height: 300px;
 }
 
@@ -192,11 +191,56 @@ label{
 
 .areaTexto
 {
-    width: 490px;
-    height: 215px;
-    background: #F1FAEE;
+    display: flex;
+    width: 600px;
+    height: 250px;
+    background: #ffecd1;
     border-radius: 15px;
     overflow: hidden;
     position: relative;
     box-shadow: 5px 5px 5px black;
+}
+
+.areaTexto textarea
+{
+    width: 450px;
+    height: 60px;
+    font-size: 20px;
+    align-items: center;
+    margin: 10px 0px 0px 10px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 2px black;
+}
+
+.verificar
+{
+    border: none;
+    outline: none;
+    background: #15616d;
+    color:white;
+    padding: 11px 25px;
+    width: 100px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px black;
+    margin: 0px 0px 165px 5px;
+    transition: 0.5s;
+}
+
+.button
+{
+
+
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.verificar:hover
+{
+    opacity: 0.8;
+    background: #ffff ;
+    color:#15616d;
+    transform: scale(1.1);
 }
