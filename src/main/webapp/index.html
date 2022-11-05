@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto de Paradigmas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+<div class="navigation">
+    <ul>
+        <li class="list active" data-color="#1D3557"><!--Carga un archivo para leer las formulas-->
+            <a href="#">
+                <label for="input-file">
+                    <input id="input-file" type="file"/>
+                    <span class="icon"><i class="fa-solid fa-upload"></i></span>
+                    <span class="title">Cargar</span>
+                </label>
+            </a>
+        </li>
+        <li class="list" data-color="#457B9D">
+            <a href="#"><!--Descarga lo que actualmente se encuentre en la pantalla-->
+                <span class="icon"><i class="fa-solid fa-download"></i></span>
+                <span class="title">Descargar</span>
+            </a>
+        </li>
+        <li class="list" data-color="#A8DADC">
+            <a href="#">
+                <span class="icon"><i class="fa-solid fa-arrows-rotate"></i></span>
+                <span class="title">Refrescar</span>
+            </a>
+        </li>
+        <div class="indicator"></div>
+    </ul>
+</div>
+
+<textarea id="content-target"></textarea>
+
+<!--Cambia de color los botones y agrega animacion-->
+<script>
+    let list= document.querySelectorAll('li');
+    for(let i=0;i<list.length;i++) {
+        list[i].onmouseover=function(){
+            let j=0;
+            while(j<list.length){
+                list[j++].className='list';
+            }
+            list[i].className='list active';
+        }
+    }
+
+    //cambia el color del fondo de acuerdo al indicador
+    list.forEach(elements =>{
+        elements.addEventListener('mouseenter', function(event){
+            let bg=document.querySelector('body');
+            let color=event.target.getAttribute('data-color');
+            bg.style.background=color;
+        })
+    })
+    document.getElementById('input-file')
+        .addEventListener('change', getFile)
+
+    function getFile(event) {
+        const input = event.target
+        if ('files' in input && input.files.length > 0) {
+            placeFileContent(
+                document.getElementById('content-target'),
+                input.files[0])
+        }
+    }
+
+    function placeFileContent(target, file) {
+        readFileContent(file).then(content => {
+            target.value = content
+        }).catch(error => console.log(error))
+    }
+
+    function readFileContent(file) {
+        const reader = new FileReader()
+        return new Promise((resolve, reject) => {
+            reader.onload = event => resolve(event.target.result)
+            reader.onerror = error => reject(error)
+            reader.readAsText(file)
+        })
+    }
+</script>
+
+</body>
+
+</html>
