@@ -15,8 +15,20 @@ body
     min-height: 100vh;
     background: #1D3557;
     transition: 0.5s;
+}
 
+.column
+{
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px;
+}
 
+.row {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .navigation
@@ -176,3 +188,9 @@ label{
   input{
     display: none;
   }
+
+.areaTexto
+{
+    width: 350px;
+    height: 250px;
+}
